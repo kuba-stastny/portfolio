@@ -22,13 +22,17 @@
           align-items: center;
 }
 
+input[type=text] {
+  padding-left: 10px;
+}
+
 .input {
   width: 100%;
   height: 40px;
   border: none;
   color: black;
   border-radius: 5px;
-  padding-left: 10px;
+  padding-left: 0px;
   font-size: 15px;
   font-weight: 800;
   font-family: exo;
@@ -46,10 +50,22 @@
           align-items: center;
 }
 
+.left-flex-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 body {
   background: white;
   font-family: exo;
-  padding-top: 60px;
+  padding-top: 120px;
 }
 
 .list {
@@ -63,13 +79,13 @@ body {
 .list .list-item {
   color: black;
   width: auto;
-  height: 35px;
+  height: 45px;
   padding: 10px;
   border-radius: 5px;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 50px auto 60px;
-      grid-template-columns: 50px auto 60px;
+  -ms-grid-columns: 50px auto 120px 80px 120px 80px 60px;
+      grid-template-columns: 50px auto 120px 80px 120px 80px 60px;
   border-bottom: 10px solid #1174d0;
   -webkit-box-shadow: 0px 0px 10px black;
           box-shadow: 0px 0px 10px black;
@@ -82,6 +98,16 @@ body {
 
 .list .list-item:hover {
   background: #f0f0f0;
+}
+
+.list-item-date-card {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 50% 50%;
+      grid-template-rows: 50% 50%;
+  height: 300px;
+  width: 300px;
+  background: white;
 }
 
 .check-ico {
@@ -113,36 +139,100 @@ body {
   color: #1174d0;
 }
 
+.add-panel-input-ico {
+  width: 30px;
+  color: white;
+}
+
 .add-panel {
   display: -ms-grid;
   display: grid;
   position: fixed;
-  width: 100%;
-  height: auto;
-  bottom: 0;
+  width: 400px;
+  height: 100%;
+  top: 0;
   left: 0;
+  margin-left: -450px;
   background: #1174d0;
-  padding: 10px;
-  -ms-grid-columns: auto 80px;
-      grid-template-columns: auto 80px;
+  padding: 20px;
+  padding-top: 100px;
+  z-index: 7;
+  -ms-grid-rows: (60px)[3] auto 100px 100px;
+      grid-template-rows: repeat(3, 60px) auto 100px 100px;
   -webkit-box-shadow: 0px 0px 5px black;
           box-shadow: 0px 0px 5px black;
+  grid-column-gap: 10px;
+  -webkit-transition: 1s;
+  transition: 1s;
 }
 
-.add-panel-btn {
-  width: 100px;
-  height: 100px;
-  background: #1174d0;
-  position: absolute;
-  margin-top: -30px;
-  margin-left: -20px;
-  padding: 10px;
-  border-radius: 100px;
+.add-panel-input-group {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 40px auto;
+      grid-template-columns: 40px auto;
+  grid-gap: 10px;
+  width: 100%;
+  font-size: 15px;
+  font-weight: 800;
+  color: white;
+}
+
+.add-panel-datetime {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (auto)[2];
+      grid-template-columns: repeat(2, auto);
+  grid-gap: 10px;
+}
+
+.open-panel-btn {
+  width: 100%;
+  height: 40px;
+  background: #f8f8f8;
+  padding: 1px;
+  border-radius: 10px;
   color: white;
   border: none;
   outline: none;
   -webkit-box-shadow: 0px 0px 5px black;
           box-shadow: 0px 0px 5px black;
+}
+
+.add-panel-out {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 6;
+  display: none;
+}
+
+.add-panel-btn {
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  background: #1174d0;
+  padding: 5px;
+  z-index: 3;
+  border-radius: 100px;
+  color: white;
+  border: none;
+  outline: none;
+}
+
+.add-panel-btn:hover {
+  cursor: pointer;
+}
+
+.show-panel-btn-ico {
+  color: #1174d0;
+  width: 30px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .add-panel-btn-ico {
@@ -161,25 +251,26 @@ body {
 .top-panel {
   position: fixed;
   width: 100%;
-  height: auto;
+  height: 70px;
   top: 0;
   left: 0;
   background: #1174d0;
   padding: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  display: -ms-grid;
+  display: grid;
+  z-index: 5;
+  -ms-grid-columns: 70px auto;
+      grid-template-columns: 70px auto;
   color: white;
   font-weight: 800;
-  font-size: 20px;
+  font-size: 25px;
   -webkit-box-shadow: 0px 0px 10px black;
           box-shadow: 0px 0px 10px black;
+}
+
+.top-panel-ico {
+  width: 50px;
+  color: white;
 }
 
 .empty-list {
@@ -201,7 +292,7 @@ body {
 }
 
 .empty-list-ico {
-  width: 80px;
+  width: 100px;
   color: #d6d6d6;
 }
 

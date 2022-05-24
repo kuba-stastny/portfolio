@@ -10,10 +10,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Exo:wght@100&family=Nunito:wght@200&display=swap"
         rel="stylesheet">
+        <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
 </head>
 
 
 <body>
+    <div class="add-panel-out" onclick="rightSidePanelOut()" id="add-panel-out">
+
+    </div>
     <div class="start-app">
         <svg class="start-app-ico" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-ui-checks-grid"
             viewBox="0 0 16 16">
@@ -21,46 +25,123 @@
                 d="M2 10h3a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1zm9-9h3a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-3a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zm0 9a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-3zm0-10a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h3a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2h-3zM2 9a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h3a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H2zm7 2a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-3a2 2 0 0 1-2-2v-3zM0 2a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.354.854a.5.5 0 1 0-.708-.708L3 3.793l-.646-.647a.5.5 0 1 0-.708.708l1 1a.5.5 0 0 0 .708 0l2-2z" />
         </svg>
     </div>
-    <div class="top-panel">
-        TO DO LIST
+    <div class="all-center">
+        <button type="button" class="add-panel-btn" onclick="showPanel()">
+            <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+            <lord-icon src="https://cdn.lordicon.com/mecwbjnp.json" trigger="hover"
+                colors="primary:#ffffff,secondary:#ffffff" style="width:90px;height:90px">
+            </lord-icon>
+        </button>
     </div>
-    <div class="add-panel">
-        <div class="all-center">
-            <input class="input" type="text" id="domTextElement" placeholder="Úkol">
+    <div class="top-panel">
+        <div class="all-flex-center">
+            <svg class="top-panel-ico" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                class="bi bi-ui-checks-grid" viewBox="0 0 16 16">
+                <path
+                    d="M2 10h3a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1zm9-9h3a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-3a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zm0 9a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-3zm0-10a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h3a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2h-3zM2 9a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h3a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H2zm7 2a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-3a2 2 0 0 1-2-2v-3zM0 2a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.354.854a.5.5 0 1 0-.708-.708L3 3.793l-.646-.647a.5.5 0 1 0-.708.708l1 1a.5.5 0 0 0 .708 0l2-2z" />
+            </svg>
         </div>
-        <div class="all-center">
-            <button type="button" class="add-panel-btn" onclick="zadanaHodnota()">
-                <svg class="add-panel-btn-ico" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+    </div>
+    <div class="add-panel" id="add-panel">
+        <div class="add-panel-input-group">
+            <div class="all-flex-center">
+                <svg class="add-panel-input-ico" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                    class="bi bi-input-cursor-text" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M5 2a.5.5 0 0 1 .5-.5c.862 0 1.573.287 2.06.566.174.099.321.198.44.286.119-.088.266-.187.44-.286A4.165 4.165 0 0 1 10.5 1.5a.5.5 0 0 1 0 1c-.638 0-1.177.213-1.564.434a3.49 3.49 0 0 0-.436.294V7.5H9a.5.5 0 0 1 0 1h-.5v4.272c.1.08.248.187.436.294.387.221.926.434 1.564.434a.5.5 0 0 1 0 1 4.165 4.165 0 0 1-2.06-.566A4.561 4.561 0 0 1 8 13.65a4.561 4.561 0 0 1-.44.285 4.165 4.165 0 0 1-2.06.566.5.5 0 0 1 0-1c.638 0 1.177-.213 1.564-.434.188-.107.335-.214.436-.294V8.5H7a.5.5 0 0 1 0-1h.5V3.228a3.49 3.49 0 0 0-.436-.294A3.166 3.166 0 0 0 5.5 2.5.5.5 0 0 1 5 2z" />
+                    <path
+                        d="M10 5h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-4v1h4a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-4v1zM6 5V4H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v-1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4z" />
+                </svg>
+            </div>
+            <div class="all-flex-center">
+                <input class="input" type="text" id="domTextElement" placeholder="Úkol">
+            </div>
+
+        </div>
+        <div class="add-panel-input-group">
+            <div class="all-flex-center">
+
+                <svg class="add-panel-input-ico" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                    class="bi bi-calendar-week-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zM9.5 7h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm3 0h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zM2 10.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3.5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5z" />
+                </svg>
+            </div>
+
+            <div class="add-panel-datetime">
+
+                <div class="all-flex-center">
+                    <input class="input" type="time" id="inputStartTime">
+                </div>
+                <div class="all-flex-center">
+                    <input class="input" type="date" id="inputStartDate">
+                </div>
+            </div>
+
+        </div>
+        <div class="add-panel-input-group">
+            <div class="all-flex-center">
+
+                <svg class="add-panel-input-ico" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                    class="bi bi-calendar-week-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zM9.5 7h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm3 0h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zM2 10.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3.5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5z" />
+                </svg>
+            </div>
+  
+
+            <div class="add-panel-datetime">
+
+                <div class="all-flex-center">
+                    <input class="input" type="time" id="inputEndTime">
+                </div>
+                <div class="all-flex-center">
+                    <input class="input" type="date" id="inputEndDate">
+                </div>
+            </div>
+
+        </div>
+        <div>
+
+        </div>
+        <div class="all-flex-center">
+            <button type="button" class="open-panel-btn all-flex-center" onclick="zadanaHodnota()">
+                <svg class="show-panel-btn-ico" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                     class="bi bi-plus-lg" viewBox="0 0 16 16">
                     <path fill-rule="evenodd"
                         d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
                 </svg>
             </button>
         </div>
-    </div>
-    <div class="empty-list" id="empty-list">
-        <svg class="empty-list-ico" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-window-x"
-            viewBox="0 0 16 16">
-            <path
-                d="M2.5 5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1ZM4 5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Zm2-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z" />
-            <path
-                d="M0 4a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v4a.5.5 0 0 1-1 0V7H1v5a1 1 0 0 0 1 1h5.5a.5.5 0 0 1 0 1H2a2 2 0 0 1-2-2V4Zm1 2h13V4a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2Z" />
-            <path
-                d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Zm-4.854-1.354a.5.5 0 0 0 0 .708l.647.646-.647.646a.5.5 0 0 0 .708.708l.646-.647.646.647a.5.5 0 0 0 .708-.708l-.647-.646.647-.646a.5.5 0 0 0-.708-.708l-.646.647-.646-.647a.5.5 0 0 0-.708 0Z" />
-        </svg>
-    </div>
-    <div class="list" id="list">
-        <div id="count">
+        <div>
 
         </div>
+    </div>
 
+
+    </div>
+
+    </div>
+    <div class="empty-list" id="empty-list">
+        <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+        <lord-icon src="https://cdn.lordicon.com/nocovwne.json" trigger="loop"
+            colors="primary:#e4e4e4,secondary:#e4e4e4" style="width:250px;height:250px">
+        </lord-icon>
+    </div>
+    <div class="list" id="list">
+   
     </div>
     <!--<div id="cards">
 
     </div>-->
+
+    
+ 
+
     <script>
         let list = [];
         let cards = [];
+
 
 
         window.onkeypress = countCharts;
@@ -72,20 +153,30 @@
         }
 
         function zadanaHodnota() {
+            document.getElementById("add-panel").style.marginLeft = '-450px';
             let inputValue = document.getElementById("domTextElement").value;
-            let inputValueFull = document.getElementById("domTextElement").value;
-            list.push(inputValue);
+            let inputStartDate = document.getElementById("inputStartDate").value;
+            let inputEndDate = document.getElementById("inputEndDate").value;
+            let inputStartTime = document.getElementById("inputStartTime").value;
+            let inputEndTime = document.getElementById("inputEndTime").value;
+            let itemId = Math.floor(Math.random() * 100);
+            let task = { toDo: inputValue, startDate: inputStartDate, startTime: inputStartTime, endDate: inputEndDate, endTime: inputEndTime };
             delkaInput = inputValue.length - 1;
             console.log(delkaInput);
             list.push(inputValue);
-            const d = new Date();
-            let date = d.getDate() + ". " + d.getMonth();
             var delkaPole = list.length - 1;
-            let checkIco = '<svg class="check-ico" id="itemIco' + delkaPole + '" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>';
-            let calendarIco = '<svg class="date-ico" id="dateIco' + delkaPole + '" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar2-range-fill" viewBox="0 0 16 16"><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zm9.954 3H2.545c-.3 0-.545.224-.545.5v1c0 .276.244.5.545.5h10.91c.3 0 .545-.224.545-.5v-1c0-.276-.244-.5-.546-.5zM10 7a1 1 0 0 0 0 2h5V7h-5zm-4 4a1 1 0 0 0-1-1H1v2h4a1 1 0 0 0 1-1z"/></svg>'
+            let deleteIco = '<lord-icon id="icoColorDelete' + itemId + '" src="https://cdn.lordicon.com/qjwkduhc.json" trigger="hover" colors="primary:#e83a30,secondary:#e83a30,tertiary:#ebe6ef" style="width:50px;height:50px;"></lord-icon>';
+            let checkIco = '<svg class="check-ico" id="itemIco' + itemId + '" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>';
+            let calendarIco = '<svg class="date-ico" id="dateIco' + itemId + '" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar2-range-fill" viewBox="0 0 16 16"><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zm9.954 3H2.545c-.3 0-.545.224-.545.5v1c0 .276.244.5.545.5h10.91c.3 0 .545-.224.545-.5v-1c0-.276-.244-.5-.546-.5zM10 7a1 1 0 0 0 0 2h5V7h-5zm-4 4a1 1 0 0 0-1-1H1v2h4a1 1 0 0 0 1-1z"/></svg>'
             document.getElementById("list").innerHTML +=
-                '<div class="list-item" id="item' + delkaPole + '" value="' + delkaPole + '" onclick="details(' + delkaPole + ')"><div class="all-flex-center" onclick="check(' + delkaPole + ')">' + checkIco + '</div><div class="left-flex-center">' + list[delkaPole] + '</div><div class="date"><div class="all-flex-center">' + calendarIco + '</div><div class="all-flex-center">' + date + '</div></div></div>';
+                '<div class="list-item" id="item' + itemId + '" value="' + itemId + '" onclick="details(' + itemId + ')"><div class="all-flex-center" onclick="check(' + itemId + ')">' + checkIco + '</div><div class="left-flex-center">' + task.toDo + '</div><div class="date"><div class="all-flex-center">' + calendarIco + '</div><div class="all-flex-center">' + task.startDate + '</div></div><div class="date"><div class="all-flex-center">' + calendarIco + '</div><div class="all-flex-center">' + task.startTime + '</div></div><div class="date"><div class="all-flex-center">' + calendarIco + '</div><div class="all-flex-center">' + task.endDate + '</div></div><div class="date"><div class="all-flex-center">' + calendarIco + '</div><div class="all-flex-center">' + task.endTime + '</div></div><div class="all-flex-center" id="itemDeleteIco' + itemId + '" onclick="deleteItem(' + itemId + ')">' + deleteIco + '</div></div>';
             document.getElementById("domTextElement").value = " ";
+            inputStartDate = document.getElementById("inputStartDate").value = " ";
+            inputEndDate = document.getElementById("inputEndDate").value = " ";
+            inputStartTime = document.getElementById("inputStartTime").value = " ";
+            inputEndTime = document.getElementById("inputEndTime").value = " ";
+            document.getElementById("add-panel-out").style.display = "none";
+
             if ((delkaPole) < 0) {
                 document.getElementById('empty-list').style.display = 'grid';
             } else {
@@ -93,11 +184,11 @@
 
             }
 
-            cards.push(inputValueFull);
+            /*cards.push(inputValueFull);
             console.log(cards);
             document.getElementById("cards").innerHTML +=
                 '<div class="card" id="card' + delkaPole + '" value="' + delkaPole + '"><div class="card-head"><div class="all-flex-center" onclick="check(' + delkaPole + ')">' + checkIco + '</div><div></div><div class="date"><div class="all-flex-center">' + calendarIco + '</div><div class="all-flex-center">' + date + '</div></div></div><div class="left-flex-center">' + list[delkaPole] + '</div></div>';
-
+*/
         }
 
 
@@ -108,6 +199,7 @@
             document.getElementById('item' + polozka).style.borderBottomColor = 'rgb(17, 116, 208)';
             document.getElementById('itemIco' + polozka).style.color = 'white';
             document.getElementById('dateIco' + polozka).style.color = 'white';
+            document.getElementById('icoColorDelete' + polozka).style.color = 'white';
 
 
         }
@@ -127,23 +219,24 @@
             document.getElementById("list").innerHTML = '';
 
         }
+        function deleteItem(polozka) {
+            document.getElementById('item' + polozka).style.display = "none";
 
-        var mysql = require('node_modules/mysql');
 
-        var con = mysql.createConnection({
-            host: "localhost",
-            user: "",
-            password: "root",
-            database: "coming soon"
-        });
+        }
 
-        con.connect(function (err) {
-            if (err) throw err;
-            con.query("SELECT * FROM data", function (err, result, fields) {
-                if (err) throw err;
-                console.log(result);
-            });
-        });
+        function showPanel() {
+            document.getElementById("add-panel").style.marginLeft = '0px';
+            document.getElementById("add-panel-out").style.display = "block";
+
+
+        }
+
+        function rightSidePanelOut() {
+            document.getElementById("add-panel").style.marginLeft = "-500px";
+            document.getElementById("add-panel-out").style.display = "none";
+        }
+
     </script>
 
 </body>

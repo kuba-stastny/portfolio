@@ -28,7 +28,15 @@ $color_blue: rgb(17, 116, 208);
     justify-content: left;
     align-items: center;
 }
-
+@mixin text-font($size, $weight, $color) {
+    font-size: $size;
+    font-weight: $weight;
+    color: $color;
+}
+@mixin svg-ico($width,$color){
+    width: $width;
+    color: $color;
+}
 .all-flex-center {
     display: flex;
     justify-content: center;
@@ -41,29 +49,35 @@ $color_blue: rgb(17, 116, 208);
     align-items: center;
 }
 
+input[type=text]{
+    padding-left: 10px;
+}
+
 .input {
     width: 100%;
     height: 40px;
     border: none;
     color: black;
     border-radius: 5px;
-    padding-left: 10px;
+    padding-left: 0px;
     font-size: 15px;
     font-weight: 800;
     font-family: exo;
 }
 
 .all-flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include all-flex-center();
+
+}
+.left-flex-center {
+   @include left-flex-center();
 }
 
 
 body {
     background: white;
     font-family: exo;
-    padding-top: 60px;
+    padding-top: 120px;
 }
 
 @mixin grid-col-auto {
@@ -78,11 +92,11 @@ body {
     .list-item {
         color: $color_basic;
         width: auto;
-        height: 35px;
+        height: 45px;
         padding: 10px;
         @include border-radius-all(5px);
         display: grid;
-        grid-template-columns: 50px auto 60px;
+        grid-template-columns: 50px auto 120px 80px 120px 80px 60px;
         border-bottom: 10px solid $color_blue;
         box-shadow: 0px 0px 10px black;
         transition: 0.5s;
@@ -99,6 +113,15 @@ body {
     }
 
 
+
+}
+
+.list-item-date-card{
+    display: grid;
+    grid-template-rows: 50% 50%;
+    height: 300px;
+    width: 300px;
+    background: $color_white;
 
 }
 
@@ -130,35 +153,87 @@ body {
     color: $color_blue;
 }
 
+.add-panel-input-ico{
+    @include svg-ico(30px, $color_white);
+}
+
 .add-panel {
     display: grid;
     position: fixed;
-    width: 100%;
-    height: auto;
-    bottom: 0;
+    width: 400px;
+    height: 100%;
+    top: 0;
     left: 0;
+    margin-left: -450px;
     background: rgb(17, 116, 208);
-    padding: 10px;
-    grid-template-columns: auto 80px;
+    padding: 20px;
+    padding-top: 100px;
+    z-index: 7;
+    grid-template-rows: repeat(3, 60px) auto 100px 100px;
     box-shadow: 0px 0px 5px black;
+    grid-column-gap: 10px;
+    transition: 1s;
 }
-
-
-.add-panel-btn {
-    width: 100px;
-    height: 100px;
-    background: rgb(17, 116, 208);
-    position: absolute;
-    margin-top: -30px;
-    margin-left: -20px;
-    padding: 10px;
-    border-radius: 100px;
+.add-panel-input-group{
+    display: grid;
+    grid-template-columns: 40px auto;
+    grid-gap: 10px;
+    width: 100%;
+    @include text-font(15px, 800, $color_white)
+}
+.add-panel-datetime{
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-gap: 10px;
+}
+.open-panel-btn {
+    width: 100%;
+    height: 40px;
+    background: rgb(248, 248, 248);
+    padding: 1px;
+    border-radius: 10px;
     color: white;
     border: none;
     outline: none;
     box-shadow: 0px 0px 5px black;
 
 }
+
+.add-panel-out {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 6;
+    display: none;
+}
+
+.add-panel-btn {
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    background: $color_blue;
+    padding: 5px;
+    z-index: 3;
+    border-radius: 100px;
+    color: $color_white;
+    border: none;
+    outline: none;
+
+}
+.add-panel-btn:hover{
+    cursor: pointer;
+}
+
+.show-panel-btn-ico {
+    color: $color_blue;
+    width: 30px;
+    transition: 0.3s;
+}
+
 
 .add-panel-btn-ico {
     color: $color_white;
@@ -174,16 +249,22 @@ body {
 .top-panel {
     position: fixed;
     width: 100%;
-    height: auto;
+    height: 70px;
     top: 0;
     left: 0;
     background: rgb(17, 116, 208);
     padding: 10px;
-    @include all-flex-center();
+    display: grid;
+    z-index: 5;
+    grid-template-columns: 70px auto;
     color: $color_white;
     font-weight: 800;
-    font-size: 20px;
+    font-size: 25px;
     box-shadow: 0px 0px 10px black;
+}
+
+.top-panel-ico{
+    @include svg-ico(50px, $color_white)
 }
 
 .empty-list {
@@ -197,8 +278,9 @@ body {
 }
 
 .empty-list-ico {
-    width: 80px;
-    color: rgb(214, 214, 214);
+
+    @include svg-ico(100px, rgb(214, 214, 214));
+
 }
 
 .card {
