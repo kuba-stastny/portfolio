@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Exo:wght@100&family=Nunito:wght@200&display=swap"
         rel="stylesheet">
-        <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+    <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
 </head>
 
 
@@ -71,10 +71,10 @@
             <div class="add-panel-datetime">
 
                 <div class="all-flex-center">
-                    <input class="input" type="time" id="inputStartTime">
+                    <input class="input" type="time" id="inputStartTime" required>
                 </div>
                 <div class="all-flex-center">
-                    <input class="input" type="date" id="inputStartDate">
+                    <input class="input" type="date" id="inputStartDate" required>
                 </div>
             </div>
 
@@ -88,15 +88,15 @@
                         d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zM9.5 7h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm3 0h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zM2 10.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3.5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5z" />
                 </svg>
             </div>
-  
+
 
             <div class="add-panel-datetime">
 
                 <div class="all-flex-center">
-                    <input class="input" type="time" id="inputEndTime">
+                    <input class="input" type="time" id="inputEndTime" required>
                 </div>
                 <div class="all-flex-center">
-                    <input class="input" type="date" id="inputEndDate">
+                    <input class="input" type="date" id="inputEndDate" required>
                 </div>
             </div>
 
@@ -129,18 +129,35 @@
         </lord-icon>
     </div>
     <div class="list" id="list">
-   
+
     </div>
     <!--<div id="cards">
 
     </div>-->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script>
 
-    
- 
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBEBLybmZcDCvNsbuCGah3NV9VOvZdDtz8",
+            authDomain: "to-do-list-908ce.firebaseapp.com",
+            projectId: "to-do-list-908ce",
+            storageBucket: "to-do-list-908ce.appspot.com",
+            messagingSenderId: "623930345889",
+            appId: "1:623930345889:web:d82db2bcf3ad9fb93ce3e0",
+            measurementId: "G-5CTWQYN8DE"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+    </script>
+
 
     <script>
         let list = [];
         let cards = [];
+        let screenWidth = screen.width;
+
 
 
 
@@ -153,42 +170,127 @@
         }
 
         function zadanaHodnota() {
-            document.getElementById("add-panel").style.marginLeft = '-450px';
             let inputValue = document.getElementById("domTextElement").value;
             let inputStartDate = document.getElementById("inputStartDate").value;
             let inputEndDate = document.getElementById("inputEndDate").value;
             let inputStartTime = document.getElementById("inputStartTime").value;
             let inputEndTime = document.getElementById("inputEndTime").value;
-            let itemId = Math.floor(Math.random() * 100);
-            let task = { toDo: inputValue, startDate: inputStartDate, startTime: inputStartTime, endDate: inputEndDate, endTime: inputEndTime };
-            delkaInput = inputValue.length - 1;
-            console.log(delkaInput);
-            list.push(inputValue);
-            var delkaPole = list.length - 1;
-            let deleteIco = '<lord-icon id="icoColorDelete' + itemId + '" src="https://cdn.lordicon.com/qjwkduhc.json" trigger="hover" colors="primary:#e83a30,secondary:#e83a30,tertiary:#ebe6ef" style="width:50px;height:50px;"></lord-icon>';
-            let checkIco = '<svg class="check-ico" id="itemIco' + itemId + '" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>';
-            let calendarIco = '<svg class="date-ico" id="dateIco' + itemId + '" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar2-range-fill" viewBox="0 0 16 16"><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zm9.954 3H2.545c-.3 0-.545.224-.545.5v1c0 .276.244.5.545.5h10.91c.3 0 .545-.224.545-.5v-1c0-.276-.244-.5-.546-.5zM10 7a1 1 0 0 0 0 2h5V7h-5zm-4 4a1 1 0 0 0-1-1H1v2h4a1 1 0 0 0 1-1z"/></svg>'
-            document.getElementById("list").innerHTML +=
-                '<div class="list-item" id="item' + itemId + '" value="' + itemId + '" onclick="details(' + itemId + ')"><div class="all-flex-center" onclick="check(' + itemId + ')">' + checkIco + '</div><div class="left-flex-center">' + task.toDo + '</div><div class="date"><div class="all-flex-center">' + calendarIco + '</div><div class="all-flex-center">' + task.startDate + '</div></div><div class="date"><div class="all-flex-center">' + calendarIco + '</div><div class="all-flex-center">' + task.startTime + '</div></div><div class="date"><div class="all-flex-center">' + calendarIco + '</div><div class="all-flex-center">' + task.endDate + '</div></div><div class="date"><div class="all-flex-center">' + calendarIco + '</div><div class="all-flex-center">' + task.endTime + '</div></div><div class="all-flex-center" id="itemDeleteIco' + itemId + '" onclick="deleteItem(' + itemId + ')">' + deleteIco + '</div></div>';
-            document.getElementById("domTextElement").value = " ";
-            inputStartDate = document.getElementById("inputStartDate").value = " ";
-            inputEndDate = document.getElementById("inputEndDate").value = " ";
-            inputStartTime = document.getElementById("inputStartTime").value = " ";
-            inputEndTime = document.getElementById("inputEndTime").value = " ";
-            document.getElementById("add-panel-out").style.display = "none";
+            function getNumberOfDays(start, end) {
+                const date1 = new Date(start);
+                const date2 = new Date(end);
 
-            if ((delkaPole) < 0) {
-                document.getElementById('empty-list').style.display = 'grid';
-            } else {
-                document.getElementById('empty-list').style.display += 'none';
+                // One day in milliseconds
+                const oneDay = 1000 * 60 * 60 * 24;
+
+                // Calculating the time difference between two dates
+                const diffInTime = date2.getTime() - date1.getTime();
+
+                // Calculating the no. of days between two dates
+                const diffInDays = Math.round(diffInTime / oneDay);
 
             }
+            let dateDiff = getNumberOfDays(inputStartDate, inputEndDate)
+            function formInputError(elementId) {
+                document.getElementById(elementId).style.borderColor = "#c91616";
+                document.getElementById(elementId).style.borderWidth = "2px";
+                document.getElementById(elementId).style.borderStyle = "solid";
+            }
+            function formInput(elementId) {
+                document.getElementById(elementId).style.borderColor = "none";
+                document.getElementById(elementId).style.borderWidth = "none";
+                document.getElementById(elementId).style.borderStyle = "none";
+            }
 
-            /*cards.push(inputValueFull);
-            console.log(cards);
-            document.getElementById("cards").innerHTML +=
-                '<div class="card" id="card' + delkaPole + '" value="' + delkaPole + '"><div class="card-head"><div class="all-flex-center" onclick="check(' + delkaPole + ')">' + checkIco + '</div><div></div><div class="date"><div class="all-flex-center">' + calendarIco + '</div><div class="all-flex-center">' + date + '</div></div></div><div class="left-flex-center">' + list[delkaPole] + '</div></div>';
-*/
+
+
+            if (inputValue == "" || inputStartDate == "" || inputEndDate == "" || inputStartTime == "" || inputEndTime == "") {
+                if (inputValue == "") {
+                    formInputError('domTextElement');
+                } else {
+                    formInput('domTextElement');
+
+                }
+                if (inputStartDate == "") {
+                    formInputError('inputStartDate');
+                } else {
+                    formInput('inputStartDate');
+
+                }
+                if (inputEndDate == "") {
+                    formInputError('inputEndDate');
+                } else {
+                    formInput('inputEndDate');
+
+                }
+                if (inputStartTime == "") {
+                    formInputError('inputStartTime');
+                } else {
+                    formInput('inputStartTime');
+
+                }
+                if (inputEndTime == "") {
+                    formInputError('inputEndTime');
+                } else {
+                    formInput('inputEndTime');
+
+                }
+            } else if (dateDiff < 0) {
+                document.getElementById("errorMsg").innerHTML = "Datum";
+            }
+            else {
+
+                let itemId = Math.floor(Math.random() * 100);
+                let task = { toDo: inputValue, startDate: inputStartDate, startTime: inputStartTime, endDate: inputEndDate, endTime: inputEndTime };
+                delkaInput = inputValue.length - 1;
+                console.log(delkaInput);
+                list.push(inputValue);
+                var delkaPole = list.length - 1;
+                let deleteIco = '<lord-icon id="icoColorDelete' + itemId + '" src="https://cdn.lordicon.com/qjwkduhc.json" trigger="hover" colors="primary:#e83a30,secondary:#e83a30,tertiary:#ebe6ef" style="width:50px;height:50px;"></lord-icon>';
+                let checkIco = '<svg class="check-ico" id="itemIco' + itemId + '" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16"><path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/></svg>';
+                let calendarIco = '<svg class="date-ico" id="dateIco' + itemId + '" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar2-range-fill" viewBox="0 0 16 16"><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zm9.954 3H2.545c-.3 0-.545.224-.545.5v1c0 .276.244.5.545.5h10.91c.3 0 .545-.224.545-.5v-1c0-.276-.244-.5-.546-.5zM10 7a1 1 0 0 0 0 2h5V7h-5zm-4 4a1 1 0 0 0-1-1H1v2h4a1 1 0 0 0 1-1z"/></svg>'
+                document.getElementById("list").innerHTML +=
+                    '<div class="list-item" id="item' + itemId + '" value="' + itemId + '" onclick="details(' + itemId + ')"><div class="all-flex-center" onclick="check(' + itemId + ')">' + checkIco + '</div><div class="left-flex-center">' + task.toDo + '</div><div class="list-item-date">fdfd<div class="list-item-date-card"><div class="date"><div class="all-flex-center">' + calendarIco + '</div><div class="all-flex-center">' + task.startDate + '</div><div class="all-flex-center">' + calendarIco + '</div><div class="all-flex-center">' + task.startTime + '</div></div><div class="date"><div class="all-flex-center">' + calendarIco + '</div><div class="all-flex-center">' + task.endDate + '</div><div class="all-flex-center">' + calendarIco + '</div></div></div></div><div class="all-flex-center" id="itemDeleteIco' + itemId + '" onclick="deleteItem(' + itemId + ')">' + deleteIco + '</div></div>';
+                document.getElementById("domTextElement").value = " ";
+                inputStartDate = document.getElementById("inputStartDate").value = " ";
+                inputEndDate = document.getElementById("inputEndDate").value = " ";
+                inputStartTime = document.getElementById("inputStartTime").value = " ";
+                inputEndTime = document.getElementById("inputEndTime").value = " ";
+                document.getElementById("add-panel").style.marginLeft = '-450px';
+                document.getElementById("add-panel-out").style.display = "none";
+
+                if ((delkaPole) < 0) {
+                    document.getElementById('empty-list').style.display = 'grid';
+                } else {
+                    document.getElementById('empty-list').style.display += 'none';
+
+                }
+
+
+
+                db.collection("tasks").add({
+                    status: "0",
+                    text: inputValue,
+                    startDate: inputStartDate,
+                    startTime: inputStartTime,
+                    endDate:inputEndDate,
+                    endTime: inputEndTime
+                })
+                    .then((docRef) => {
+                        console.log("Document written with ID: ", docRef.id);
+                    })
+                    .catch((error) => {
+                        console.error("Error adding document: ", error);
+                    });
+
+
+
+
+                /*cards.push(inputValueFull);
+                console.log(cards);
+                document.getElementById("cards").innerHTML +=
+                    '<div class="card" id="card' + delkaPole + '" value="' + delkaPole + '"><div class="card-head"><div class="all-flex-center" onclick="check(' + delkaPole + ')">' + checkIco + '</div><div></div><div class="date"><div class="all-flex-center">' + calendarIco + '</div><div class="all-flex-center">' + date + '</div></div></div><div class="left-flex-center">' + list[delkaPole] + '</div></div>';
+    */
+            }
         }
 
 
@@ -240,5 +342,6 @@
     </script>
 
 </body>
+
 
 </html>
